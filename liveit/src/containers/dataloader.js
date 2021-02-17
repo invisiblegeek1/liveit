@@ -1,5 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import Card from '../components/card';
+import {withRouter} from 'react-router-dom';
 import "./dataLoader.css";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -29,4 +30,4 @@ function Dataloader() {
     )
 }
 
-export default Dataloader
+export default withRouter(Dataloader); 

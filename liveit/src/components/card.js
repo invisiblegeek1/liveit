@@ -1,6 +1,7 @@
 import React from 'react';
 import "./card.css";
 import Button from '@material-ui/core/Button';
+import {connect} from 'react-redux'
 
 
 
@@ -12,14 +13,20 @@ function Card(props) {
                 <p className="Product__Title">{props.content.title}</p>
                 <p className="Price__Symbol"><span>&#8377; </span>{props.content.price}</p>
                 <div className="Action__Container">
-                <Button variant="contained" color="primary">
+                <Button variant="contained" color="primary" >
                  Buy
                 </Button>
-                    <p className="Learn__More__Btn">Add to cart</p>
+                    <p className="Learn__More__Btn" onClick={()=>{props.inval(props.content.id,props.content.image,props.content.title,props.content.price);}} >Add to cart</p>
                 </div> 
             </div>
         </div>
     )
 }
+const addCart=(dispatch)=>{
+    return {
+        inval:(prtid,img,title,price)=>{dispatch({type:'INCREMENT',payload:{id:prtid,imgurl:img,heading:title,rate:price,Quantity:1}})},
+        
+    }
 
-export default Card
+}
+export default connect(null,addCart)(Card)
