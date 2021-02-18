@@ -43,12 +43,16 @@
     
     
 }
-.Learn__More__Btn{
+.Add__To__Cart__Btn{
     font-size: 0.8rem;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     font-weight: 600;
     color: #3f51b5;
     cursor: pointer;
+
+}
+.Add__To__Cart__Btn:hover{
+    color: #3f51b5cb;
 
 }
 .Price__Symbol{

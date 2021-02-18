@@ -6,14 +6,22 @@
     align-items: center;
     
 }
+.Cart__Card__Container{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
 .Cart__Card{
     width: 90vw;
     height: 320px;
-    border-radius: 10px;
-    border: 3px solid #3f51b5 ;
+    /* border-radius: 10px;
+    border: 3px solid #3f51b5 ; */
     padding: 1px;
     margin: 5px;
-    box-shadow: 2px 0 0 1px rgba(0, 0, 0, 0.04), 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    /* box-shadow: 2px 0 0 1px rgba(0, 0, 0, 0.04), 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
     
     align-items: center;
     display: flex;
@@ -25,4 +33,60 @@
     margin: 5px;
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
+}
+.Cart__Product__Details{
+    display:flex;
+    text-align: left;
+    justify-content: left;
+    flex-direction: column;
+    
+}
+#Cart__Qty__Iec__Btn{
+    background-color: #fff;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+
+    border: 2px solid #3f51b5 ;
+    color: #3f51b5;
+
+    
+}
+#Cart__Qty__Dec__Btn{
+    background-color: #fff;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border: 2px solid #3f51b5 ;
+    color: #3f51b5;
+
+    
+}
+#Cart__Qty__Dec__Btn:disabled{
+    border: 2px solid #d12222 ;
+    color: #d12222;
+
+
+}
+hr{
+    background-color:#3f51b5;
+    height: 2px;
+    width: 98%;
+}
+.Cart__green__line{
+    background-color:#07e019;
+    height: 2px;
+    width: 92%;
+
+}
+.Cart__Total__Amount{
+    color: #3f51b5;
+}
+ul{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }

@@ -5,7 +5,7 @@ import { createStore } from "redux";
 import Reducer from "./redux/reducer";
 import { Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
-import Cart from './components/Cart'
+import CartLoader from './containers/CartLoader'
 
 const store = createStore(Reducer);
 
@@ -16,7 +16,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route path="/" exact render={() => <Data />} />
-          <Route path="/cart"  render={() => <Cart />}/>
+          <Route path="/cart"  render={() => <CartLoader />}/>
         </Switch>
       </div>
     </Provider>
