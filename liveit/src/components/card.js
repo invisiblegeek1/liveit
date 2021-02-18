@@ -16,12 +16,13 @@ function Card(props) {
                 <Button variant="contained" color="primary" >
                  Buy
                 </Button>
-                    <p className="Learn__More__Btn" onClick={()=>{props.inval(props.content.id,props.content.image,props.content.title,props.content.price);}} >Add to cart</p>
+                    <p className="Add__To__Cart__Btn" onClick={()=>{props.inval(props.content.id,props.content.image,props.content.title,props.content.price,props.content.description);}} >Add to cart</p>
                 </div> 
             </div>
         </div>
     )
 }
+
 const addCart=(dispatch)=>{
     return {
         inval:(prtid,img,title,price)=>{dispatch({type:'INCREMENT',payload:{id:prtid,imgurl:img,heading:title,rate:price,Quantity:1}})},
