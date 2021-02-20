@@ -11,7 +11,7 @@ function Card(props) {
         <p className="Product__Title">{props.content.title}</p>
         <p className="Price__Symbol">
           <span>&#8377; </span>
-          {props.content.price}
+          {Math.round(props.content.price)}
         </p>
         <div className="Action__Container">
           <Button variant="contained" color="primary">
@@ -24,7 +24,7 @@ function Card(props) {
                 props.content.id,
                 props.content.image,
                 props.content.title,
-                props.content.price
+                Math.round(props.content.price)
               );
             }}
           >

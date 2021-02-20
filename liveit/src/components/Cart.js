@@ -4,7 +4,7 @@ import "./Cart.css";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
-
+import { Link } from "react-router-dom";
 
 function Cart(props) {
   return (
@@ -14,66 +14,77 @@ function Cart(props) {
         props.product.map((it, index) => {
           return (
             <div className="Cart__Card__Container">
-              
               <hr></hr>
-            <div key={index} className="Cart__Card">
-              <img
-                src={it.imgurl}
-                alt=""
-                className="Cart__Product__Image"
-              ></img>
-              <div className="Cart__Product__Details">
-                <p className="Cart__Product__Title">{it.heading}</p>
-                
-                <p className="Cart__Product__Price">
-                  <span>&#8377; </span>
-                  {it.rate}
-                </p>
-                <p className="Cart__Product__Quantity">
-                  {"Quantity- " + it.Quantity}
-                </p>
-                <div className="Cart__Btn__Container">
+              <div key={index} className="Cart__Card">
+                <img
+                  src={it.imgurl}
+                  alt=""
+                  className="Cart__Product__Image"
+                ></img>
+                <div className="Cart__Product__Details">
+                  <p className="Cart__Product__Title">{it.heading}</p>
+
+                  <p className="Cart__Product__Price">
+                    <span>&#8377; </span>
+                    {it.rate}
+                  </p>
+                  <p className="Cart__Product__Quantity">
+                    {"Quantity- " + it.Quantity}
+                  </p>
+                  <div className="Cart__Btn__Container">
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      id="Cart__Qty__Iec__Btn"
+                      onClick={() => {
+                        props.inQty(it.id, it.rate);
+                      }}
+                    >
+                      <AddIcon />
+                    </Button>
+                    {it.Quantity > 1 ? (
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        id="Cart__Qty__Dec__Btn"
+                        onClick={() => {
+                          props.decQty(it.id, it.rate);
+                        }}
+                      >
+                        <RemoveIcon />
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="contained"
+                        color="outlined"
+                        id="Cart__Qty__Dec__Btn"
+                        disabled={true}
+                        onClick={() => {
+                          props.decQty(it.id, it.rate);
+                        }}
+                      >
+                        <RemoveIcon />
+                      </Button>
+                    )}
+                  </div>
+
+                  <p
+                    className="Cart__Product__Total"
+                    onChangeCapture={() => {
+                      props.updateTotal(it.Quantity * it.rate);
+                    }}
+                  >{`Total price =${it.Quantity * it.rate}`}</p>
                   <Button
                     variant="contained"
-                    color="primary"
-                    id="Cart__Qty__Iec__Btn"
+                    color="secondary"
                     onClick={() => {
-                      props.inQty(it.id, it.rate);
+                      props.delItem(it.id, it.Quantity, it.rate);
                     }}
                   >
-                    <AddIcon />
+                    Remove Item
                   </Button>
-                  {it.Quantity>1?<Button
-                    variant="contained"
-                    color="primary"
-                    id="Cart__Qty__Dec__Btn"
-                    onClick={() => {
-                      props.decQty(it.id, it.rate);
-                    }}
-                  >
-                    <RemoveIcon />
-                  </Button>:<Button
-                    variant="contained"
-                    color="primary"
-                    id="Cart__Qty__Dec__Btn"
-                    disabled={true}
-                    onClick={() => {
-                      props.decQty(it.id, it.rate);
-                    }}
-                  >
-                    <RemoveIcon />
-                  </Button>}
                 </div>
-
-                <p
-                  className="Cart__Product__Total"
-                  onChangeCapture={() => {
-                    props.updateTotal(it.Quantity * it.rate);
-                  }}
-                >{`Total price =${it.Quantity * it.rate}`}</p>
               </div>
-            </div>
-            
             </div>
           );
         })
@@ -81,8 +92,11 @@ function Cart(props) {
         <h1>nothing in cart</h1>
       )}
       <hr className="Cart__green__line"></hr>
-      <ul>{props.product.map((item,index)=>{
-        return (<li key={index}><p>{item.heading}</p> <p>{`sub Total= ${item.Quantity*item.rate}`}</p></li>)})}</ul>
+      <Link to="/checkout" style={{ color: "white", textDecoration: "none" }}>
+        <Button variant="contained" color="primary">
+          CHECK OUT
+        </Button>
+      </Link>
       <div className="Cart__Total__Amount">{`Total Amount=${props.state.total}`}</div>
       <hr className="Cart__green__line"></hr>
     </div>
@@ -102,6 +116,9 @@ const mapCartToDispatch = (dispatch) => {
     },
     decQty: (itmId, total) => {
       dispatch({ type: "DECREMENT_QTY", id: itmId, subtotal: total });
+    },
+    delItem: (itmId, Qty, price) => {
+      dispatch({ type: "DECREMENT", id: itmId, Quantity: Qty, rate: price });
     },
   };
 };

@@ -11,7 +11,7 @@ function Dataloader() {
         useEffect(()=>{
             async function Loader (){
 
-                fetch('https://fakestoreapi.com/products')
+                fetch('https://localhost:8080')
                     .then(res => res.json())
                     .then((json) =>{ console.log(json)
                     Datahandler({loading:false ,data:json})} )

@@ -4,11 +4,11 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
+
 import Badge from "@material-ui/core/Badge";
-import SearchIcon from "@material-ui/icons/Search";
+
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     display: "none",
     [theme.breakpoints.up("sm")]: {
-      display: "block",
+      display: "flex",
     },
   },
   search: {
@@ -76,6 +76,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PrimarySearchAppBar = (props) => {
+  const ctr = useSelector(state=>state.counter);
   const classes = useStyles();
 
   return (
@@ -83,45 +84,28 @@ const PrimarySearchAppBar = (props) => {
       <AppBar position="static">
         <Toolbar>
           {/* logo of site */}
-          <Typography className={classes.title} variant="h6" noWrap>
+          <Typography  variant="h6" >
            <Link to="/" style={{color:"white" ,textDecoration:"none"}}>LiveCart</Link> 
           </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
-          </div>
+         
           <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
+          
             <IconButton aria-label="show 4 new mails" color="inherit">
             <Link className="nav-link" to="/cart">
-            <Badge badgeContent={props.ctr} color="secondary">
+            <Badge badgeContent={ctr} color="secondary">
                 <ShoppingCartOutlinedIcon  style={{fill:"white"}}/>
               </Badge>
 
             </Link>
               
             </IconButton>
-          </div>
+          
         </Toolbar>
       </AppBar>
     </div>
   );
 };
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-    ctr: state.counter,
-  };
-};
 
-export default connect(mapStateToProps, null)(PrimarySearchAppBar);
+
+export default PrimarySearchAppBar;
