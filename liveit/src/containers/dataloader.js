@@ -11,7 +11,7 @@ function Dataloader() {
         useEffect(()=>{
             async function Loader (){
 
-                fetch('https://localhost:8080')
+                fetch('https://livecart.herokuapp.com/')
                     .then(res => res.json())
                     .then((json) =>{ console.log(json)
                     Datahandler({loading:false ,data:json})} )
