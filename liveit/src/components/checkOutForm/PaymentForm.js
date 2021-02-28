@@ -28,6 +28,8 @@ const PaypalButton = (props) => {
         onApprove: async (data, actions) => {
           const order = await actions.order.capture();
           setpaidFor(true);
+          console.log(order);
+
         },
         onError: (err) => {
           seterror(err);
