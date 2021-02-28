@@ -2,6 +2,7 @@ const initialState = {
   counter: 0,
   products: [],
   total: 0,
+  
 };
 
 //actions
@@ -66,7 +67,7 @@ const productIndex= (state,action)=>{
 
 const decrementCounter = (state, action) => {
   let index=productIndex(state,action);
-  console.log(index);
+  
   
   return {
     ...state,
@@ -94,6 +95,8 @@ function Reducer(state = initialState, action) {
 
     case "DECREMENT":
       return decrementCounter(state, action);
+    
+
 
     default:
       return state;

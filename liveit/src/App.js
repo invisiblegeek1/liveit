@@ -6,7 +6,7 @@ import Reducer from "./redux/reducer";
 import { Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import CartLoader from './containers/CartLoader';
-import CheckOutFrom from './components/CheckOutForm'
+import CheckOutFrom from './components/checkOutForm/AddressForm'
 
 const store = createStore(Reducer);
 
