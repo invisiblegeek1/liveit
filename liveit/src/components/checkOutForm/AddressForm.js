@@ -38,7 +38,7 @@ const theme = createMuiTheme({
   const classes = useStyles();
   const products=useSelector(state=>state.products)
   const [ischeckout,checkoutStatechange]=useState(true)
-  const CheckOutHandler=()=>{
+  const CheckOutHandler=(e)=>{
     if(ischeckout){
       
       
@@ -50,7 +50,7 @@ ReactDOM.render(
   ,
   document.getElementById("paybutton")
 );
-    
+   
   }
   
 
@@ -58,11 +58,13 @@ ReactDOM.render(
 
   return (
     <form className={classes.root} noValidate>
+      <h3>Shipping Details</h3>
       <ThemeProvider theme={theme}>
         <TextField
           className={classes.margin}
           label="First name"
           id="mui-theme-provider-standard-input"
+          required
         />
         <TextField
           className={classes.margin}
@@ -103,10 +105,10 @@ ReactDOM.render(
           inputProps={{ type: "number" }}
         />
         <div id='paybutton' ></div>
-        <Button variant='outlined' color='primary' onClick={()=>{
+        <Button  variant='contained' color='primary' onClick={(e)=>{
           if(products.length){
-            checkoutStatechange();
-            CheckOutHandler();
+            checkoutStatechange(true);
+            CheckOutHandler(e);
 
 
           }

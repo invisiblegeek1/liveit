@@ -1,10 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
+import Alert from '@material-ui/lab/Alert';
+
 
 const PaypalButton = (props) => {
-  const { items, total } = props;
+  const { items} = props;
   const [paidFor, setpaidFor] = useState(false);
   const [error, seterror] = useState(null);
   const paypalref = useRef();
+  
   useEffect(() => {
     window.paypal
       .Buttons({
@@ -15,8 +18,8 @@ const PaypalButton = (props) => {
               {
                 description: "LiveCart Store Checkout",
                 amout: {
-                  currency_code: "INR",
-                  value: 10,
+                  currency: "INR",
+                  value: '10.0',
                 },
               },
             ],
@@ -32,13 +35,15 @@ const PaypalButton = (props) => {
         },
       })
       .render(paypalref.current);
-    console.log("payment button ready");
+    
   }, [items]);
   if (paidFor) {
     return <div>Thanks for purchasing</div>;
   }
   if (error) {
-    return <div>Error in processing .Try Again</div>;
+    return <Alert severity="error" 
+    >Error in processing Try Again and refersh </Alert>
+    
   }
   return <div ref={paypalref} />;
 };
