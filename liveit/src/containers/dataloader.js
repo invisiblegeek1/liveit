@@ -5,6 +5,8 @@ import "./dataLoader.css";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 
+
+
 function Dataloader() {
     const [Data,Datahandler]=useState({loading:true});
    
@@ -24,7 +26,10 @@ function Dataloader() {
 
     return (
         <div className="Outer__Container" >
-            {Data.loading?<CircularProgress/>:Data.data.map((txt,index)=>{return <Card content={txt} />})}
+            
+            {Data.loading?<CircularProgress/>:Data.data.map((txt,index)=>{return <Card content={txt} /> })}
+            
+            
             
         </div>
     )

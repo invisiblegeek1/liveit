@@ -3,7 +3,7 @@ import Alert from '@material-ui/lab/Alert';
 
 
 const PaypalButton = (props) => {
-  const { items} = props;
+  
   const [paidFor, setpaidFor] = useState(false);
   const [error, seterror] = useState(null);
   const paypalref = useRef();
@@ -28,15 +28,16 @@ const PaypalButton = (props) => {
         onApprove: async (data, actions) => {
           const order = await actions.order.capture();
           setpaidFor(true);
+          console.log(order);
         },
         onError: (err) => {
-          seterror(err);
+          seterror(err)
           console.error(err);
         },
       })
       .render(paypalref.current);
     
-  }, [items]);
+  }, []);
   if (paidFor) {
     return <div>Thanks for purchasing</div>;
   }
