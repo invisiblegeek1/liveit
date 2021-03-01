@@ -15,7 +15,7 @@ function Dataloader() {
 
                 fetch('https://livecart.herokuapp.com/')
                     .then(res => res.json())
-                    .then((json) =>{ console.log(json)
+                    .then((json) =>{ 
                     Datahandler({loading:false ,data:json})} )
                     
 

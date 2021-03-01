@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import firebase from 'firebase';
+import './signup.css'
+import {connect} from 'react-redux'
 
 
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
@@ -8,10 +10,15 @@ firebase.initializeApp({
     authDomain: "likeit-d80b7.firebaseapp.com"
 });
 
-export default class Authentication extends Component {
-    state={
-        isSigneIn:false
-    }
+ class Authentication extends Component {
+     constructor(props){
+        super(props);
+        this.state={
+            isSigneIn:false
+        };
+
+     }
+     
 
      Config = {
         // Popup signin flow rather than redirect flow.
@@ -24,26 +31,30 @@ export default class Authentication extends Component {
             firebase.auth.GoogleAuthProvider.PROVIDER_ID,
           
         ],
-        callbacks: {
-            // Avoid redirects after sign-in.
-            signInSuccessWithAuthResult: () =>{}
-          }
+        
       };
       ComponentDidMount=()=>{
-          firebase.auth().onAuthStateChanged(user=>{
+          firebase.auth().onAuthStateChanged((user)=>{
               this.setState({isSigneIn:!!user})
+              this.props.adduser(user);
               console.log(user)
           })
       }
 
     render() {
         return (
-            <div>
-            {this.state.isSigneIn?<div>Signe in</div>:
-              <StyledFirebaseAuth uiConfig={this.Config} firebaseAuth={firebase.auth()}/>  }
+            <div className="Auth__Container">
+            {this.state.isSigneIn?<div>Signe in</div>:<div>
+                <h4>Livecart wants to Authenticate you.</h4>
+                <p>Please provide your details by one of the methods below.</p>
+              <StyledFirebaseAuth uiConfig={this.Config} firebaseAuth={firebase.auth()}/> </div> }
             </div>
         )
     }
 }
+const mapTopUser=(dispatch)=>{
+   return {adduser:(user)=>{ dispatch({type:'ADD_USER',user:user});}}
+}
+export default connect(null,mapTopUser)(Authentication);
 
 

@@ -85,7 +85,7 @@ const PrimarySearchAppBar = (props) => {
         <Toolbar>
           {/* logo of site */}
           <Typography  variant="h6" >
-           <Link to="/" style={{color:"white" ,textDecoration:"none"}}>LiveCart</Link> 
+           <Link to="/products" style={{color:"white" ,textDecoration:"none"}}>LiveCart</Link> 
           </Typography>
          
           <div className={classes.grow} />

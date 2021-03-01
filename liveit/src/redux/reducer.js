@@ -2,6 +2,7 @@ const initialState = {
   counter: 0,
   products: [],
   total: 0,
+  CurrentUser:''
   
 };
 
@@ -95,7 +96,12 @@ function Reducer(state = initialState, action) {
 
     case "DECREMENT":
       return decrementCounter(state, action);
-    
+    case 'ADD_USER':
+      return {
+        ...state,
+        CurrentUser:action.user
+
+      }
 
 
     default:

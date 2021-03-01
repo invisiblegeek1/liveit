@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Alert from '@material-ui/lab/Alert';
 
 
-const PaypalButton = (props) => {
+const PaypalButton = () => {
   
   const [paidFor, setpaidFor] = useState(false);
   const [error, seterror] = useState(null);
@@ -14,12 +14,12 @@ const PaypalButton = (props) => {
         createOrder: (data, actions) => {
           return actions.order.create({
             intent: "CAPTURE",
-            purchase_unita: [
+            purchase_units: [
               {
                 description: "LiveCart Store Checkout",
-                amout: {
-                  currency: "INR",
-                  value: '10.0',
+                amount: {
+                  currency_code: "INR",
+                  value: 10.0,
                 },
               },
             ],

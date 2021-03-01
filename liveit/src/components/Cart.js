@@ -13,9 +13,9 @@ function Cart(props) {
       {props.product ? (
         props.product.map((it, index) => {
           return (
-            <div className="Cart__Card__Container">
+            <div key={index}className="Cart__Card__Container">
               <hr></hr>
-              <div key={index} className="Cart__Card">
+              <div  className="Cart__Card">
                 <img
                   src={it.imgurl}
                   alt=""
@@ -23,11 +23,6 @@ function Cart(props) {
                 ></img>
                 <div className="Cart__Product__Details">
                   <p className="Cart__Product__Title">{it.heading}</p>
-
-                  <p className="Cart__Product__Price">
-                    <span>&#8377; </span>
-                    {it.rate}
-                  </p>
                   <p className="Cart__Product__Quantity">
                     {"Quantity- " + it.Quantity}
                   </p>
@@ -56,7 +51,7 @@ function Cart(props) {
                     ) : (
                       <Button
                         variant="contained"
-                        color="outlined"
+                        color="primary"
                         id="Cart__Qty__Dec__Btn"
                         disabled={true}
                         onClick={() => {
@@ -75,7 +70,9 @@ function Cart(props) {
                     }}
                   >{`Total price =${it.Quantity * it.rate}`}</p>
                   <Button
-                    variant="contained"
+
+                    variant="outlined"
+                    id="Remove__btn"
                     color="secondary"
                     onClick={() => {
                       props.delItem(it.id, it.Quantity, it.rate);
@@ -92,12 +89,16 @@ function Cart(props) {
         <h1>nothing in cart</h1>
       )}
       <hr className="Cart__green__line"></hr>
+      <div style={{display:"flex",flexBasis:"row" ,justifyContent:"space-between"}}>
       <Link to="/checkout" style={{ color: "white", textDecoration: "none" }}>
         <Button variant="contained" color="primary">
           CHECK OUT
         </Button>
       </Link>
-      <div className="Cart__Total__Amount">{`Total Amount=${props.state.total}`}</div>
+      <div className="Cart__Total__Amount">Total Amount= <span>&#8377; </span> {props.state.total}</div>
+
+      </div>
+      
       <hr className="Cart__green__line"></hr>
     </div>
   );
