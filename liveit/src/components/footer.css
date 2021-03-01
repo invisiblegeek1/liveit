@@ -1,0 +1,53 @@
+.footerContainer{
+    position: fixed;
+    bottom: 0; 
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 100px;
+    flex-direction: column;
+    align-self: center;
+    background-color:white;
+    width: 100vw;
+    height: fit-content;
+
+
+}
+
+
+
+.footerContainer .IconContainer{
+    position: relative;
+    bottom: 0;
+    
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    font-size:30px;
+    height: fit-content;
+    padding: 5px;
+    color: rgba(28, 12, 215, 0.8667);
+    
+
+}
+.footerContainer .IconContainer a{
+    color: rgba(28, 12, 215, 0.8667);
+    margin: 0;
+
+}
+@media only screen and (max-width: 760px) {
+    footer .footerContainer{
+        height: 50px;
+    }
+    .footerContainer .IconContainer a{
+        font-size:20px;
+        margin: 2px;
+
+    }
+    .footerContainer p{
+        font-size: 15px;
+        margin: 2px;
+    }
+  
+
+}

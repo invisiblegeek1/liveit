@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import Alert from '@material-ui/lab/Alert';
 
 
-const PaypalButton = (props) => {
-  const { items} = props;
+const PaypalButton = () => {
+  
   const [paidFor, setpaidFor] = useState(false);
   const [error, seterror] = useState(null);
   const paypalref = useRef();
@@ -14,12 +14,12 @@ const PaypalButton = (props) => {
         createOrder: (data, actions) => {
           return actions.order.create({
             intent: "CAPTURE",
-            purchase_unita: [
+            purchase_units: [
               {
                 description: "LiveCart Store Checkout",
-                amout: {
-                  currency: "INR",
-                  value: '10.0',
+                amount: {
+                  currency_code: "INR",
+                  value: 10.0,
                 },
               },
             ],
@@ -30,15 +30,16 @@ const PaypalButton = (props) => {
           setpaidFor(true);
           console.log(order);
 
+
         },
         onError: (err) => {
-          seterror(err);
+          seterror(err)
           console.error(err);
         },
       })
       .render(paypalref.current);
     
-  }, [items]);
+  }, []);
   if (paidFor) {
     return <div>Thanks for purchasing</div>;
   }

@@ -72,13 +72,16 @@
 
 
 }
+#Remove__btn{
+    width: fit-content;
+}
 hr{
     background-color:#3f51b5;
     height: 2px;
     width: 98%;
 }
 .Cart__green__line{
-    background-color:#07e019;
+    background-color:#3f51b586;
     height: 2px;
     width: 92%;
 
@@ -87,9 +90,11 @@ hr{
     color: #3f51b5;
 }
 .Cart__Total__Amount{
-    color: green;
+    color:#000;
     display:flex;
     justify-content: last baseline;
+    margin-left: 30px;
+    font-weight: 600;
 }
 .Cart__Product__Title{
     color: #3f51b5;

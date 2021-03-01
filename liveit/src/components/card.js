@@ -2,6 +2,7 @@ import React from "react";
 import "./card.css";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
+import {Link} from 'react-router-dom'
 
 function Card(props) {
   return (
@@ -14,9 +15,19 @@ function Card(props) {
           {Math.round(props.content.price)}
         </p>
         <div className="Action__Container">
-          <Button variant="contained" color="primary">
+          <Link to='/cart'>
+          <Button variant="contained" color="primary" onClick={() => {
+              props.inval(
+                props.content.id,
+                props.content.image,
+                props.content.title,
+                Math.round(props.content.price)
+              );
+              
+            }}>
             Buy
           </Button>
+          </Link>
           <p
             className="Add__To__Cart__Btn"
             onClick={() => {
