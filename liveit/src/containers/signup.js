@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import firebase from 'firebase';
-import firebaseui from 'firebaseui';
+
+
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 firebase.initializeApp({
     apiKey: "AIzaSyCvD6VsE9fW1vt6aZr3iHYAmv4L0mI5LRs",
@@ -25,7 +26,7 @@ export default class Authentication extends Component {
         ],
         callbacks: {
             // Avoid redirects after sign-in.
-            signInSuccessWithAuthResult: () => false
+            signInSuccessWithAuthResult: () =>{}
           }
       };
       ComponentDidMount=()=>{

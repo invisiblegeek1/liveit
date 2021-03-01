@@ -27,7 +27,7 @@ function Dataloader() {
     return (
         <div className="Outer__Container" >
             
-            {Data.loading?<CircularProgress/>:Data.data.map((txt,index)=>{return <Card content={txt} /> })}
+            {Data.loading?<CircularProgress/>:Data.data.map((txt,index)=>{return <Card key={index} content={txt} /> })}
             
             
             

@@ -19,7 +19,7 @@ function App() {
         <Navbar />
         
         <Switch>
-          <Route path="/" render={()=><Signup />} />
+          <Route path="/" exact render={()=><Signup />} />
 
           <Route path="/products" exact render={() => <Data />} />
           <Route path="/cart"  render={() => <CartLoader />}/>

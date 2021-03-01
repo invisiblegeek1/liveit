@@ -57,6 +57,7 @@ ReactDOM.render(
   }
 
   return (
+    <div>
     <form className={classes.root} noValidate>
       <h3>Shipping Details</h3>
       <ThemeProvider theme={theme}>
@@ -104,8 +105,12 @@ ReactDOM.render(
           id="mui-theme-provider-standard-input"
           inputProps={{ type: "number" }}
         />
-        <div id='paybutton' ></div>
-        <Button  variant='contained' color='primary' onClick={(e)=>{
+        
+      </ThemeProvider>
+      
+    </form>
+    <div id='paybutton' ></div>
+        <Button  variant='outlined' color='secondary' onClick={(e)=>{
           if(products.length){
             checkoutStatechange(true);
             CheckOutHandler(e);
@@ -113,8 +118,7 @@ ReactDOM.render(
 
           }
         }} >PAY</Button>
-      </ThemeProvider>
-    </form>
+    </div>
   );
 }
 
