@@ -29,6 +29,8 @@ const PaypalButton = () => {
           const order = await actions.order.capture();
           setpaidFor(true);
           console.log(order);
+
+
         },
         onError: (err) => {
           seterror(err)
