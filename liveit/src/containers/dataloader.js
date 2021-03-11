@@ -18,13 +18,7 @@ function Dataloader() {
     Loader();
   }, [Data.loading]);
 
-  const filterFunction=(txt,index)=>{
-    if(txt.price>100){
-        return (<Card key={index} content={txt} />)
-
-    }
-
-  }
+  
   
 
   return (
@@ -32,7 +26,7 @@ function Dataloader() {
       {Data.loading ? (
         <CircularProgress />
       ) : (
-        Data.data.map((txt,index)=>{ return filterFunction(txt,index)}))}
+        Data.data.filter(txt=>txt.price>100).map((txt,index)=>{return (<Card key={index} content={txt} />)}))}
     </div>
   );
 }
