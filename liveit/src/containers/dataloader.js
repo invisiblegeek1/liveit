@@ -18,13 +18,7 @@ function Dataloader() {
     Loader();
   }, [Data.loading]);
 
-  const filterFunction=(txt,index)=>{
-    if(txt.price>100){
-        return (<Card key={index} content={txt} />)
-
-    }
-
-  }
+  
   
 
   return (
