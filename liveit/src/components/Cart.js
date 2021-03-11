@@ -14,7 +14,7 @@ function Cart(props) {
         props.product.map((it, index) => {
 
           
-            // ()=>{}
+            
             return (
               <div key={index} className="Cart__Card__Container">
                 <hr></hr>
