@@ -2,7 +2,7 @@ const initialState = {
   counter: 0,
   products: [],
   total: 0,
-  CurrentUser:''
+  CurrentUser:[]
   
 };
 
@@ -99,7 +99,7 @@ function Reducer(state = initialState, action) {
     case 'ADD_USER':
       return {
         ...state,
-        CurrentUser:action.user
+        CurrentUser:[...state.CurrentUser,...action.user]
 
       }
 
