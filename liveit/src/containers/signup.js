@@ -6,8 +6,8 @@ import {connect} from 'react-redux'
 
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 firebase.initializeApp({
-    apiKey: "AIzaSyCvD6VsE9fW1vt6aZr3iHYAmv4L0mI5LRs",
-    authDomain: "likeit-d80b7.firebaseapp.com"
+    apiKey: 'AIzaSyCvD6VsE9fW1vt6aZr3iHYAmv4L0mI5LRs',
+    authDomain: 'likeit-d80b7.firebaseapp.com'
 });
 
  class Authentication extends Component {
@@ -35,9 +35,10 @@ firebase.initializeApp({
       };
       ComponentDidMount=()=>{
           firebase.auth().onAuthStateChanged((user)=>{
-              this.setState({isSigneIn:!!user})
-              this.props.adduser(user);
-              console.log(user)
+              console.log('user',user)
+              this.setState({isSigneIn:!!firebase.auth().currentUser})
+              this.props.adduser(firebase.auth().currentUser);
+              
           })
       }
 
